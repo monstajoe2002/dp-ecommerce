@@ -24,4 +24,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 * ```classes``` : Any factory classes that are used to represent data
 * ```databases``` : MongoDB method calls
 * ```pages```: all pages in the web app
-* ```api```: api calls can be created here and URL will be mapped accordingly (e.g. the file api/foo.ts apps to endpoint /api/foo)
+
