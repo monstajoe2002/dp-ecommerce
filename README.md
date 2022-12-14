@@ -20,7 +20,8 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Project Structure (not final)
-* ```model``` : Any classes that are used to represent data
-* ```controller``` : MongoDB method calls
+## Project Structure
+* ```classes``` : Any factory classes that are used to represent data
+* ```databases``` : MongoDB method calls
 * ```pages```: all pages in the web app
+* ```api```: api calls can be created here and URL will be mapped accordingly (e.g. the file api/foo.ts apps to endpoint /api/foo)
