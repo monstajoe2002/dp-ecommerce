@@ -1,7 +1,7 @@
 import { GroceryType} from "../enums/GroceryType";
 import  Dairy  from "./Dairy";
 
-class Yogurt extends Dairy {
+class yogurt extends Dairy {
     
 
     constructor(img? :string)
@@ -10,4 +10,4 @@ class Yogurt extends Dairy {
     }
 }
 
-export default Yogurt;
+export default yogurt;
