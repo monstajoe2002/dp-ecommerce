@@ -14,13 +14,10 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { Product } from "../../types/Product";
-import useLocalStorage from "../../hooks/useLocalStorage";
 import useCart from "../../hooks/useCart";
 import { CartItem } from "../../types/CartItem";
-import { Cart } from "../../types/Cart";
 
 export default function ProductCard({ product }: { product: Product }) {
-  const [cart, setCart] = useLocalStorage<Cart>("cart", { items: [] , totalAmount: 0});
   const { addItem } = useCart();
   const toast = useToast();
   const addToCart = (): void => {

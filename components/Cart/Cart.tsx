@@ -5,15 +5,8 @@ export default function Cart() {
   const [cart, setCart] = useLocalStorage('cart', []);
   const handleAddPurchaseHistory = async (e:any) => {
     e.preventDefault();
-    await fetch("/api/history", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cart),
-    });
-    console.log("Purchase History Added");
-    // setCart([]);
+    
+    setCart([]);
   }
   return (
     <div>
