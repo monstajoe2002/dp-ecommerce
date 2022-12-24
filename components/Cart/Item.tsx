@@ -25,6 +25,7 @@ export default function Item({ item }: { item: CartItem }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { removeItem } = useCart();
   const handleDelete = () => {
+    
     removeItem(item.id);
   };
   return (
@@ -69,7 +70,7 @@ export default function Item({ item }: { item: CartItem }) {
         aria-label="Delete item"
         icon={<DeleteIcon />}
         w={"auto"}
-        onClick={onOpen}
+        onClick={handleDelete}
       />
       {/* Delete prompt */}
       <Divider maxW={"container.xl"} />
@@ -79,7 +80,10 @@ export default function Item({ item }: { item: CartItem }) {
           <ModalHeader>Warning</ModalHeader>
           <ModalBody>Are you sure you want to delete this item?</ModalBody>
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={handleDelete}>
+            <Button colorScheme="red" mr={3} onClick={() => {
+              handleDelete();
+              onClose();
+            }}>
               Delete
             </Button>
             <Button variant="ghost" onClick={onClose}>
