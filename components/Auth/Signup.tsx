@@ -12,6 +12,7 @@ import {
   Select,
   useDisclosure,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useRef } from "react";
 import { UserRole } from "../../types/UserRole";
 
@@ -28,16 +29,10 @@ export default function SignUp() {
       !role.current?.value
     )
       return;
-    await fetch("http://localhost:3000/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username.current?.value,
-        password: password.current?.value,
-        role: role.current?.value,
-      }),
+    await axios.post("/api/auth/signup", {
+      username: username.current.value,
+      password: password.current.value,
+      role: role.current.value,
     });
   };
 
