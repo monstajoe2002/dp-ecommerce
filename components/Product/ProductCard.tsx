@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardBody,
@@ -16,11 +16,22 @@ import {
 import { Product } from "../../types/Product";
 import useCart from "../../hooks/useCart";
 import { CartItem } from "../../types/CartItem";
-
+import { AuthContext } from "../../context/authContext";
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const toast = useToast();
+  const { user } = useContext(AuthContext);
   const addToCart = (): void => {
+    if (!user.username) {
+      toast({
+        title: "Not logged in",
+        description: "Please login to add items to cart",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+     }
     addItem(product as CartItem);
     toast({
       title: "Added to cart",

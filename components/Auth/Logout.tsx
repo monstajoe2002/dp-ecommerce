@@ -17,6 +17,7 @@ import React from "react";
 export default function Logout() {
   const handleLogout = async (e: React.FormEvent<HTMLButtonElement>) => {
     window.localStorage.removeItem("user");
+    window.localStorage.removeItem("cart");
   };
 
   return (
