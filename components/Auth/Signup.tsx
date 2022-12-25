@@ -9,12 +9,38 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Select,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
+import { UserRole } from "../../types/UserRole";
 
 export default function SignUp() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const username = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
+  const role = useRef<HTMLSelectElement & UserRole>(null);
+  const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (
+      !username.current?.value ||
+      !password.current?.value ||
+      !role.current?.value
+    )
+      return;
+    await fetch("http://localhost:3000/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username.current?.value,
+        password: password.current?.value,
+        role: role.current?.value,
+      }),
+    });
+  };
+
   return (
     <>
       <Button colorScheme={"blue"} onClick={onOpen}>
@@ -27,15 +53,19 @@ export default function SignUp() {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Username</FormLabel>
-              <Input />
+              <Input ref={username} />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>Password</FormLabel>
-              <Input />
+              <Input ref={password} />
             </FormControl>
+            <Select ref={role} placeholder="Select role" mt={4}>
+              <option value={"customer" as UserRole}>Customer</option>
+              <option value={"seller" as UserRole}>Seller</option>
+            </Select>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
               Create Account
             </Button>
             <Button variant="ghost" onClick={onClose}>
