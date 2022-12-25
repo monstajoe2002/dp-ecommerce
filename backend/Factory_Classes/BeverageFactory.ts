@@ -5,7 +5,7 @@ import {BeverageType} from "../enums/BeverageType";
 
 
 class BeverageFactory {
-    createBev(pro : BeverageType) {
+    createProduct(pro : BeverageType) {
         if (pro === BeverageType.coffee)
             return new Coffee();
        

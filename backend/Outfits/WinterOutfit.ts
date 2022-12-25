@@ -7,7 +7,8 @@ class WinterOutfit extends Product {
 //,s:OutfitSize
     constructor( name:string, price: number, amount :number , desc :string   , category_name: SeasonType, img?: string )
     {
-      super(name , price , amount  , desc , SeasonType.WinterOutfit  , img )
+      super(name , price , amount  , desc , SeasonType.WinterOutfit , img )
+      
       //this.size = s
     }
 }

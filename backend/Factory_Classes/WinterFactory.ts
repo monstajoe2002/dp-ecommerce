@@ -5,7 +5,7 @@ import Pullover from "../Outfits/Pullover";
 
 class WinterFactory{
 
-    createOutfit(Outfit: WinterOutfits) {
+    createProduct(Outfit: WinterOutfits) {
         if (Outfit === WinterOutfits.Jacket)
             return new Jacket();
         if (Outfit === WinterOutfits.Pullover)

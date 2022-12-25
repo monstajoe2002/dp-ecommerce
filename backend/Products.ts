@@ -1,4 +1,5 @@
 
+import { EnumType } from "typescript";
 import { v4 as uuid } from "uuid";
 import { SeasonType } from "./enums/OutfitsType";
 
@@ -9,11 +10,12 @@ export class Product {
   public unit_price: number;
   public stock_quantity: number;
   public description: string;
-  readonly category : number ;
+  readonly category : number; 
+  // I made the category type here number because all my enum values are assigned to numbers and divided into different categories
   public image? : string
  
 
-  constructor( n: string, price: number, amount :number , desc :string  , cat:SeasonType , img?: string)
+  constructor( n: string, price: number, amount :number , desc :string  , cat:number , img?: string)
   {
     this.id = element_id ; 
     this.name = n ; 
@@ -38,6 +40,11 @@ setStock(amount:number){
 }
 setImage(img:string){
   this.image=img ; 
+}
+
+orderPrice( p:Product , amount: number ): number {
+  let totalPrice = 0;
+  return totalPrice = p.unit_price * amount ;
 }
   }
 

@@ -11,6 +11,9 @@ class PowerToolFactory {
             return new Saw();
         if (Ptool === PowerTypes.ImpactDriver)
             return new ImpactDriver();
+         else {
+         throw new Error('Invalid Powertool object');
+         }
     }
 }
 export default PowerToolFactory

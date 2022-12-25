@@ -5,7 +5,7 @@ import {BakeryType} from "../enums/BakeryType";
 
 
 class BakeryFactory {
-    createBread(p : BakeryType) {
+    createProduct(p : BakeryType) {
         if (p === BakeryType.sandwich)
             return new Sandwich();
         if (p === BakeryType.Tortilla)
