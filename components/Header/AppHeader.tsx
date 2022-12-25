@@ -1,23 +1,25 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  HStack,
-  Switch,
-} from "@chakra-ui/react";
-import React from "react";
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import React, { useContext } from "react";
 import Login from "../Auth/Login";
 
 import Signup from "../Auth/Signup";
 import AppDrawer from "./AppDrawer";
-
+import { AuthContext } from "../../context/authContext";
 export default function AppHeader() {
+  const { user, setUser } = useContext(AuthContext);
   return (
     <HStack mb={4}>
       <AppDrawer />
-      <Signup />
-      <Login />
+      {user ? (
+        <Text fontSize="lg">
+          Hello, <Text fontWeight={"medium"}>{user.username}</Text>{" "}
+        </Text>
+      ) : (
+        <>
+          <Signup />
+          <Login />
+        </>
+      )}
     </HStack>
   );
 }

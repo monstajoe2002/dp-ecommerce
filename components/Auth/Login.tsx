@@ -12,26 +12,29 @@ import {
   Select,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { UserRole } from "../../types/UserRole";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { User } from "../../backend/model/User";
+import { AuthContext } from "../../context/authContext";
 export default function Login() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const role = useRef<HTMLSelectElement & UserRole>(null);
-  let user: any;
+  const {user, setUser} = useContext(AuthContext);
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     isFieldEmpty();
-    user = await axios.get("/api/auth/login", {
+    const {data} = await axios.get("/api/auth/login", {
       params: {
         username: username.current!.value,
       },
     });
+    setUser(data);
+    
   };
   const isFieldEmpty = () => {
     if (
