@@ -1,4 +1,4 @@
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { HStack, Text,  } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import Login from "../Auth/Login";
 
@@ -10,9 +10,14 @@ export default function AppHeader() {
   return (
     <HStack mb={4}>
       <AppDrawer />
-      {user ? (
+      {user.username? (
         <Text fontSize="lg">
-          Hello, <Text fontWeight={"medium"}>{user.username}</Text>{" "}
+          Hello, <Text as="span" color="blue.500">
+            {user.username}.{" "}
+          </Text>
+          You are logged in as a <Text as="span" color="blue.500">
+            {user.role.slice(0, 1).toUpperCase() + user.role.slice(1)}
+            </Text>
         </Text>
       ) : (
         <>
