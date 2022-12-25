@@ -1,7 +1,7 @@
 import {UserTypes} from "../enums/UserTypes";
 import bcrypt from 'bcrypt'
 
-export abstract class AbstractUser {
+export  class AbstractUser {
     public Username: string;
     public Password: string;
     public Usertype: UserTypes ; 
@@ -15,8 +15,8 @@ export abstract class AbstractUser {
     setUserName(Username:string){
         this.Username= Username;
     }
-    setPassword(Password:string){
-        this.password= Password;
+    setPassword(Pass:string){
+        this.Password= Pass;
     }
    
 }

@@ -1,7 +1,6 @@
 
-import { EnumType } from "typescript";
 import { v4 as uuid } from "uuid";
-import { SeasonType } from "./enums/OutfitsType";
+
 
 const element_id: string = uuid();  //to call the uuid function to return a uuid string.
 export class Product {
