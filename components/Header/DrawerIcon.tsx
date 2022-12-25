@@ -7,7 +7,7 @@ export default function Cart() {
     return window.location.pathname === "/" ? true : false;
   };
   const isSignedIn = (): boolean => {
-    return !window.localStorage.getItem("user") 
+    return window.localStorage.getItem("user")? true : false; 
   };
   return (
     <>
