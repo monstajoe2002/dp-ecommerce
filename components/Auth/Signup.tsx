@@ -15,27 +15,39 @@ import {
 import axios from "axios";
 import React, { useRef } from "react";
 import { UserRole } from "../../types/UserRole";
-
+import { useToast } from "@chakra-ui/react";
 export default function SignUp() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const role = useRef<HTMLSelectElement & UserRole>(null);
+  const toast = useToast();
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    isFieldEmpty();
+    await axios.post("/api/auth/signup", {
+      username: username.current!.value,
+      password: password.current!.value,
+      role: role.current!.value,
+    });
+  };
+  const isFieldEmpty = () => {
     if (
       !username.current?.value ||
       !password.current?.value ||
       !role.current?.value
-    )
-      return;
-    await axios.post("/api/auth/signup", {
-      username: username.current.value,
-      password: password.current.value,
-      role: role.current.value,
-    });
+    ) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return true;
+    }
+    return false;
   };
-
   return (
     <>
       <Button colorScheme={"blue"} onClick={onOpen}>

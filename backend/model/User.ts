@@ -1,5 +1,3 @@
-import { createModel } from "../database/db";
-
 const mongoose = require("mongoose");
 
 export const userSchema = new mongoose.Schema({
@@ -8,4 +6,4 @@ export const userSchema = new mongoose.Schema({
   role: String,
 });
 
-export const User = createModel("User", userSchema);
+export const User = mongoose.model("User", userSchema);

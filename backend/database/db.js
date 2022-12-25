@@ -8,7 +8,5 @@ export async function connectToMongo() {
         console.error(error);
     }
 }
-export function createModel(name, schema) {
-    return mongoose.model(name, schema);
-}
+
 
