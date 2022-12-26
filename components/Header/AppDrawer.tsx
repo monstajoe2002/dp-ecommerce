@@ -14,6 +14,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Link,
   Stack,
   Text,
   useColorMode,
@@ -49,10 +50,14 @@ export default function AppDrawer() {
           <DrawerBody>
             <Stack spacing={"24px"}>
               {user.role === "seller" ? (
-                <Button colorScheme={"green"}>
-                  <AddIcon />
-                  <Text ml={2}>Add Product</Text>
-                </Button>
+                <Link href="/product/create" _hover={{
+                  textDecoration: "none",
+                }}>
+                  <Button colorScheme={"green"}>
+                    <AddIcon />
+                    <Text ml={2}>Add Product</Text>
+                  </Button>
+                </Link>
               ) : null}
             </Stack>
           </DrawerBody>
