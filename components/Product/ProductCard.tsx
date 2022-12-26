@@ -13,11 +13,13 @@ import {
   Center,
   useToast,
   Link,
+  Box,
 } from "@chakra-ui/react";
 import { Product } from "../../types/Product";
 import useCart from "../../hooks/useCart";
 import { CartItem } from "../../types/CartItem";
 import { AuthContext } from "../../context/authContext";
+import { CloseIcon } from "@chakra-ui/icons";
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const toast = useToast();
@@ -32,7 +34,7 @@ export default function ProductCard({ product }: { product: Product }) {
         isClosable: true,
       });
       return;
-     }
+    }
     addItem(product as CartItem);
     toast({
       title: "Added to cart",
@@ -45,10 +47,15 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <>
-      <Link href={`/product/${product.id}`} _hover={{textUnderline:"none"}}>
+      <Link href={`/product/${product.id}`} _hover={{ textUnderline: "none" }}>
         <Card maxW={"sm"}>
           <CardBody>
             <Stack>
+              {user.role === "seller" ? (
+                <Box ml={"auto"}>
+                  <CloseIcon />
+                </Box>
+              ) : null}
               <Center>
                 <Image
                   boxSize="250px"
@@ -69,7 +76,11 @@ export default function ProductCard({ product }: { product: Product }) {
             </Stack>
           </CardBody>
           <Divider />
-          <CardFooter>
+          <CardFooter
+            style={{
+              display: user.role === "seller" ? "none" : "block",
+            }}
+          >
             <ButtonGroup spacing="2">
               <Button variant="solid" colorScheme="blue" onClick={addToCart}>
                 Add to cart
