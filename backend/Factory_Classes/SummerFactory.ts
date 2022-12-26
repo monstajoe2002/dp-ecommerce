@@ -1,5 +1,5 @@
-import Short from "../Outfits/Short.js";
-import Tshirt from "../Outfits/Tshirt.js";
+import Short from "../Outfits/Short";
+import Tshirt from "../Outfits/Tshirt";
 import {SummerOutfits} from "../enums/SummerSeason";
 
 
