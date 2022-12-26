@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connectToMongo } from "../../../backend/database/db";
-import { userSchema } from "../../../backend/model/User";
-const User = mongoose.model("User",userSchema);
+
+const User = require("../../../backend/model/User");
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -10,7 +10,6 @@ export default async function handler(
   switch (req.method) {
     case "GET":
       const userLogin = req.query;
-      await connectToMongo();
       const user = await User.findOne(userLogin);
       if (!user) {
         res.status(404).json({ message: "User not found" });

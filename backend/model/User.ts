@@ -1,4 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import { connectToMongo } from "../database/db";
+connectToMongo();
 
 export const userSchema = new mongoose.Schema({
   username: String,
@@ -6,4 +8,4 @@ export const userSchema = new mongoose.Schema({
   role: String,
 });
 
-export const User = mongoose.model("User", userSchema);
+export const User=mongoose.model("User",userSchema)? mongoose.model("User",userSchema):mongoose.model("User");

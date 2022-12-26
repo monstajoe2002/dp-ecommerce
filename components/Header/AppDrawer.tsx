@@ -18,13 +18,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon, MoonIcon, SearchIcon, SunIcon } from "@chakra-ui/icons";
-import CategoryList from "../Product/CategoryList";
 import DrawerIcon from "./DrawerIcon";
 
 export default function AppDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
- 
+
   return (
     <>
       <Button mr="auto" onClick={onOpen}>
@@ -39,17 +38,7 @@ export default function AppDrawer() {
           <Divider />
           <DrawerBody>
             <Stack spacing={"24px"}>
-              <Box>
-                <CategoryList />
-              </Box>
-              <Box>
-                <InputGroup>
-                  <InputLeftElement pointerEvents="none">
-                    <SearchIcon color="gray.300" />
-                  </InputLeftElement>
-                  <Input type="text" placeholder="Search..." />
-                </InputGroup>
-              </Box>
+              
             </Stack>
           </DrawerBody>
           <DrawerFooter>
