@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -10,19 +10,29 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
   Stack,
+  Text,
   useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, MoonIcon, SearchIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  AddIcon,
+  HamburgerIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+} from "@chakra-ui/icons";
 import DrawerIcon from "./DrawerIcon";
+import { AuthContext } from "../../context/authContext";
 
 export default function AppDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { user, setUser } = useContext(AuthContext);
 
   return (
     <>
@@ -38,7 +48,12 @@ export default function AppDrawer() {
           <Divider />
           <DrawerBody>
             <Stack spacing={"24px"}>
-              
+              {user.role === "seller" ? (
+                <Button colorScheme={"green"}>
+                  <AddIcon />
+                  <Text ml={2}>Add Product</Text>
+                </Button>
+              ) : null}
             </Stack>
           </DrawerBody>
           <DrawerFooter>
