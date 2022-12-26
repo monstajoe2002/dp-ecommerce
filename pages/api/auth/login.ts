@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connectToMongo } from "../../../backend/database/db";
 
-const User = require("../../../backend/model/User");
+import {User} from "../../../backend/model/User";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

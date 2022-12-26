@@ -8,4 +8,4 @@ export const userSchema = new mongoose.Schema({
   role: String,
 });
 
-export const User=mongoose.model("User",userSchema)? mongoose.model("User",userSchema):mongoose.model("User");
+export const User=mongoose.model("User",userSchema);

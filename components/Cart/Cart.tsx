@@ -2,12 +2,17 @@ import Item from "./Item";
 import { Button, Text } from "@chakra-ui/react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useCart from "../../hooks/useCart";
+import axios from "axios";
 export default function Cart() {
   const [cart, setCart] = useLocalStorage("cart", []);
   const { totalAmount } = useCart();
   const handleAddPurchaseHistory = async (e: any) => {
     e.preventDefault();
-
+    await axios.post("/api/user/purchaseHistory", { 
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      cart:JSON.stringify(cart),
+     });
     setCart([]);
   };
   return (
