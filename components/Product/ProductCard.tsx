@@ -14,12 +14,13 @@ import {
   useToast,
   Link,
   Box,
+  HStack,
 } from "@chakra-ui/react";
 import { Product } from "../../types/Product";
 import useCart from "../../hooks/useCart";
 import { CartItem } from "../../types/CartItem";
 import { AuthContext } from "../../context/authContext";
-import { CloseIcon } from "@chakra-ui/icons";
+import { CloseIcon, EditIcon } from "@chakra-ui/icons";
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const toast = useToast();
@@ -52,9 +53,12 @@ export default function ProductCard({ product }: { product: Product }) {
           <CardBody>
             <Stack>
               {user.role === "seller" ? (
-                <Box ml={"auto"}>
-                  <CloseIcon />
-                </Box>
+                <>
+                  <HStack ml={"auto"} spacing={4}>
+                    <EditIcon boxSize={5} />
+                    <CloseIcon />
+                  </HStack>
+                </>
               ) : null}
               <Center>
                 <Image
