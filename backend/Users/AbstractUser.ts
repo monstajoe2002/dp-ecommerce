@@ -1,7 +1,7 @@
 import {UserTypes} from "../enums/UserTypes";
 import bcrypt from 'bcrypt'
 
-export  class AbstractUser {
+export abstract class AbstractUser {
     public Username: string;
     public Password: string;
     public Usertype: UserTypes ; 
