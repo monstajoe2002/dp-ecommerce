@@ -1,0 +1,23 @@
+import mongoose from "mongoose";
+
+const purchaseHistorySchema = new mongoose.Schema({
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+
+  cart: {
+    type: {
+      type: String,
+      required: true,
+    },
+  },
+});
+export const PurchaseHistory = mongoose.model(
+  "PurchaseHistory",
+  purchaseHistorySchema
+);
