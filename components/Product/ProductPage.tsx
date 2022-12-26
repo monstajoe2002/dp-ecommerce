@@ -25,16 +25,20 @@ export default function ProductPage({
   image: string;
 }) {
   const review = useRef<HTMLInputElement>(null);
-  const user = window.localStorage.getItem("user");
+  const user = () => {
+    if (typeof window !== "undefined") {
+      return JSON.parse(localStorage.getItem("user") || "{}");
+    }
+    return null;
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     await axios.post(`/api/products/reviews/${id}`, {
       createdAt: new Date(),
       updatedAt: new Date(),
-      user: JSON.parse(user as string),
+      user: JSON.stringify(user),
       review: review.current?.value,
     });
-    console.log(review.current?.value);
   };
   return (
     <>
