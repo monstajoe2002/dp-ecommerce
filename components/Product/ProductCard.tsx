@@ -12,6 +12,7 @@ import {
   ButtonGroup,
   Center,
   useToast,
+  Link,
 } from "@chakra-ui/react";
 import { Product } from "../../types/Product";
 import useCart from "../../hooks/useCart";
@@ -44,37 +45,39 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <>
-      <Card maxW={"sm"}>
-        <CardBody>
-          <Stack>
-            <Center>
-              <Image
-                boxSize="250px"
-                objectFit="cover"
-                src={product.image}
-                alt={product.title}
-                borderRadius="lg"
-              />
-            </Center>
-            <Heading size="md">{product.title}</Heading>
-            <Text>{product.description}</Text>
-            <Text fontSize="2xl" textColor="blue.600">
-              {new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-              }).format(product.price)}
-            </Text>
-          </Stack>
-        </CardBody>
-        <Divider />
-        <CardFooter>
-          <ButtonGroup spacing="2">
-            <Button variant="solid" colorScheme="blue" onClick={addToCart}>
-              Add to cart
-            </Button>
-          </ButtonGroup>
-        </CardFooter>
-      </Card>
+      <Link href={`/product/${product.id}`} _hover={{textUnderline:"none"}}>
+        <Card maxW={"sm"}>
+          <CardBody>
+            <Stack>
+              <Center>
+                <Image
+                  boxSize="250px"
+                  objectFit="cover"
+                  src={product.image}
+                  alt={product.title}
+                  borderRadius="lg"
+                />
+              </Center>
+              <Heading size="md">{product.title}</Heading>
+              <Text>{product.description}</Text>
+              <Text fontSize="2xl" textColor="blue.600">
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(product.price)}
+              </Text>
+            </Stack>
+          </CardBody>
+          <Divider />
+          <CardFooter>
+            <ButtonGroup spacing="2">
+              <Button variant="solid" colorScheme="blue" onClick={addToCart}>
+                Add to cart
+              </Button>
+            </ButtonGroup>
+          </CardFooter>
+        </Card>
+      </Link>
     </>
   );
 }

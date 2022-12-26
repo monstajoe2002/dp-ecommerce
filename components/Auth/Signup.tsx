@@ -26,9 +26,9 @@ export default function SignUp() {
     e.preventDefault();
     isFieldEmpty();
     await axios.post("/api/auth/signup", {
-      username: username.current!.value,
-      password: password.current!.value,
-      role: role.current!.value,
+      username: username.current?.value,
+      password: password.current?.value,
+      role: role.current?.value,
     });
   };
   const isFieldEmpty = () => {

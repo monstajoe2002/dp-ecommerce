@@ -11,7 +11,13 @@ const purchaseHistorySchema = new mongoose.Schema({
   },
 
   cart: {
-    type: String
-  }
+    type: {
+      type: String,
+      required: true,
+    },
+  },
 });
-export const PurchaseHistory = mongoose.model("PurchaseHistory", purchaseHistorySchema);
+export const PurchaseHistory = mongoose.model(
+  "PurchaseHistory",
+  purchaseHistorySchema
+);

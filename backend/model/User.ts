@@ -3,9 +3,21 @@ import { connectToMongo } from "../database/db";
 connectToMongo();
 
 export const userSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-  role: String,
+  username: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  role: {
+    type: String,
+    unique: true,
+    required: true,
+  },
 });
 
-export const User=mongoose.model("User",userSchema);
+export const User = mongoose.model("User", userSchema);
