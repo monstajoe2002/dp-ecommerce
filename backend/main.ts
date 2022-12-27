@@ -5,12 +5,12 @@ import DairyFactory from "./Factory_Classes/DairyFactory";
 const groceriesFactory = new FactoryOrchestrator().createFactory(FactoryType.DairyGrocery)
 console.log(groceriesFactory);
 
-// class AbstractFactoryDemo {
-//     main() {
+class AbstractFactoryDemo {
+    main() {
        // create instance of factory
-//       const factoryProducer = new FactoryOrchestrator();
+      const factoryProducer = new FactoryOrchestrator();
     
 
-//     }
-// }
-// AbstractFactoryDemo.prototype.main();
+    }
+}
+AbstractFactoryDemo.prototype.main();

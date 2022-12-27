@@ -1,10 +1,9 @@
 export enum FactoryType {
-    Summer_Outfit = 1,
-    Winter_Outfit = 2,
-    PowerTool = 3 , 
-    HandTool = 4 ,
-    BeverageGrocery = 5 , 
-    DairyGrocery = 6 ,
-    BakeryGrocery = 7 ,
-  }
-  
+  Summer_Outfit="Summer Outfit",
+  Winter_Outfit="Winter Outfit",
+  PowerTool="Power Tool",
+  HandTool="Hand Tool",
+  BeverageGrocery="Beverage Grocery",
+  DairyGrocery="Dairy Grocery",
+  BakeryGrocery="Bakery Grocery",
+}
