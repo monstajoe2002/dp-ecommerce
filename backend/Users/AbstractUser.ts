@@ -9,7 +9,7 @@ export abstract class AbstractUser {
     constructor(Username:string, password:string , userType:UserTypes)
     {
         this.Username = Username;
-        this.Password = bcrypt.hashSync(password , 8) // to encrypt it and save it
+        this.Password = password // to encrypt it and save it
         this.Usertype = userType ;
     }
     setUserName(Username:string){
