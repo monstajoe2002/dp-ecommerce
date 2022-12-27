@@ -16,6 +16,7 @@ import {
   Box,
   HStack,
   IconButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { Product } from "../../types/Product";
 import useCart from "../../hooks/useCart";
@@ -23,10 +24,12 @@ import { CartItem } from "../../types/CartItem";
 import { AuthContext } from "../../context/authContext";
 import { CloseIcon, EditIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import EditProductModal from "./EditProductModal";
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const toast = useToast();
   const { user } = useContext(AuthContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteProduct = async () => {
     toast({
       title: "Deleted",
@@ -65,7 +68,8 @@ export default function ProductCard({ product }: { product: Product }) {
             {user.role === "seller" ? (
               <>
                 <HStack ml={"auto"} spacing={4} mb={4}>
-                  <IconButton aria-label="edit product" icon={<EditIcon />} />
+                  <IconButton aria-label="edit product" icon={<EditIcon />} onClick={onOpen} />
+                  <EditProductModal isOpen={isOpen} onClose={onClose} />
                   <IconButton
                     aria-label="edit product"
                     icon={<CloseIcon />}
